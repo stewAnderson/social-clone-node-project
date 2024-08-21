@@ -1,7 +1,6 @@
 // const { ensureAuthenticated } = require("../middleware/checkAuth");
 import express from "express";
 import * as database from "../controller/postController";
-import {type} from "node:os";
 const router = express.Router();
 
 router.get("/list", async (req, res) => {

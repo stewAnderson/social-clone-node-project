@@ -1,7 +1,6 @@
 import express from "express";
 import passport from "../middleware/passport";
 import * as database from "../controller/postController";
-import * as crypto from "crypto";
 const router = express.Router();
 
 router.get("/login", async (req, res) => {
