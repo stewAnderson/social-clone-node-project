@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>CreatePost</title>
+  </head>
+  <body>
+    <div class="header">
+      <a class="logoBtn" role="button" href="/"><h1><strong>Not Reddit</strong></h1></a>
+      <div class="navbar">
+        <a role="button" href="/">Home</a>
+        <a role="button" href="/subs/list">Subs</a>
+        <% if (!user) { %>
+          <a role="button" href="/auth/login">Login</a>
+        <% } else { %>
+          <a role="button" href="/auth/logout">Logout</a>
+        <% } %>
+        <a role="button" href="/auth/signUp">Sign Up</a>
+      </div>
+    </div>
+    <main>
+      <div class="authOptions">
+        <h1>Create Post</h1>
+      </div>
+      <article>
+        <form action="/posts/create/" method="POST">
+          <input type="text" id="title" name="title" placeholder="Title" required><br>
+          <input type="text" id="link" name="link" placeholder="Link"><br>
+          <textarea id="description" name="description" placeholder="Description" rows="4" cols="50" required></textarea><br>
+          <input type="text" id="sub" name="sub" placeholder="Subgroup" required><br>
+          <button type="submit">Submit</button>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>

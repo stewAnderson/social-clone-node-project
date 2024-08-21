@@ -1,0 +1,241 @@
+
+
+body {
+}
+
+.header {
+  overflow: hidden;
+  padding: 40px 0 0 0;
+  min-width: 95vw;
+  margin: auto;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #202c3a;
+}
+
+.logoBtn {
+  border: none;
+  background-color: #141e26;
+  border-radius: 5px;
+  padding: 10px 60px;
+  margin: 10px 0 40px 30px;
+}
+
+.logoBtn:hover {
+  background-color: #1e2d3a;
+  border: none;
+  transition: 0.1s;
+}
+
+
+.header h1 {
+  color: #E3B505;
+  padding: 20px;
+  margin: 0;
+}
+
+.navbar {
+  display:flex;
+  justify-content: center;
+  height: 76px;
+  border-radius: 5px;
+  background-color: #141e26;
+
+}
+ .navbar a {
+   padding: 20px 40px;
+ }
+
+
+.navbar a[role="button"] {
+  border: none;
+  background-color: #141e26;
+  border-radius: 5px;
+  margin: 1px 0;
+}
+.navbar a[role="button"]:hover {
+  background-color: #1e2d3a;
+  border: none;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-bottom-color: #ffffff;
+  transition: 0.1s;
+}
+
+
+
+a[role="button"] {
+  border-radius: 40px;
+}
+
+button { border-radius: 40px;}
+button:hover {}
+
+article {
+  margin: 20px 0;
+  padding: 50px 30px;
+}
+
+.post footer{
+  margin: 10px -30px -80px -30px;
+  padding-top: 20px;
+
+}
+
+.postAuthor {
+  display: flex;
+  align-items: baseline;
+}
+
+.postAuthor p {
+  margin: 0 0 10px 0;
+}
+
+.date {
+  padding-left: 20px;
+  color: gray;
+  font-size: small;
+}
+
+.unameError {
+  background-color: #E3B505;
+  color: black;
+  font-size: smaller;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  width: 521px;
+}
+
+.postList {}
+
+.postListing {
+  padding: 40px;
+}
+
+.postListing a {
+  color: white;
+}
+
+.postDetails a{
+  margin-bottom: 20px;
+}
+.smallBtn {
+  display: flex;
+  padding: 5px 16px;
+  align-items: baseline;
+  width: fit-content;
+  height: 32px;
+  border-radius: 20px;
+  margin: 3px;
+}
+
+.postBtnBar {
+  display: flex;
+  margin-top: 30px;
+}
+
+
+.voteBox {
+  background-color: #1e95be;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.3s;
+}
+
+.smallBtn:hover {
+  background-color: #28b3e1;
+}
+
+.voteBox * {
+  font-size: 16px;
+  margin: 0;
+  line-height: 32px;
+  padding: 0 4px;
+}
+
+.voteButton, .downvoted, .upvoted {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+}
+
+.upvoted {
+  color: #27e627;
+}
+
+.downvoted {
+  color: #e52121;
+}
+
+.commentsBox {
+
+}
+
+.commentInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentInfo img {
+  width: 20px;
+  height: 20px;
+}
+
+.commentInfo button {
+  background-color: #3a3a3a;
+  border: none;
+}
+
+.loginBox {
+  max-width: 500px;
+}
+
+#editBtn {
+  margin-left: auto;
+}
+
+#editForm {
+  background-color: #18232c;
+  border-radius: 10px;
+  padding: 40px 20px 20px 20px;
+  margin-top: 20px;
+}
+
+#editForm label {
+  color: gray;
+  font-size: smaller;
+  padding-left: 5px;
+}
+
+#deleteCommentBtn {
+  background-color: #3a3a3a;
+  border: none;
+}
+
+#commentBtn img, #editBtn img {
+  filter: invert(100%);
+  width: 20px;
+  height: 20px;
+}
+
+#deletePostBtn img, #deleteCommentBtn img{
+  width: 20px;
+  height: 20px;
+}
+
+.deleteBtnContainer form {
+  margin-bottom: 0;
+}
+.deleteBtnContainer button {
+  border: none;
+}
+
+
+#deleteBtnContainer * {
+  margin: 10px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Sign Up</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <a class="logoBtn" role="button" href="/"><h1><strong>Not Reddit</strong></h1></a>
+      <div class="navbar">
+        <a role="button" href="/">Home</a>
+        <a role="button" href="/subs/list">Subs</a>
+        <% if (!user) { %>
+          <a role="button" href="/auth/login">Login</a>
+        <% } else { %>
+          <a role="button" href="/auth/logout">Logout</a>
+        <% } %>
+        <a role="button" href="">Sign Up</a>
+      </div>
+    </div>
+
+    <main>
+      <div style="display: flex; justify-content: space-around">
+        <article class="signUpBox">
+          <h1>Sign Up</h1>
+          <form action="/auth/signUp" method="POST">
+            <input type="text" name="uname" id="uname" placeholder="Username" required/>
+            <% if (typeof unameErrorMsg !== "undefined") { %>
+              <p class="unameError"><%= unameErrorMsg %></p>
+            <% } %>
+            <input type="password" name="password" id="password" placeholder="Password" required/>
+            <button type="submit">Sign Up</button>
+          </form>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
