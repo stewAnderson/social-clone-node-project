@@ -17,6 +17,7 @@ html {
 .header {
   /*overflow: hidden;*/
   display: flex;
+  justify-content: space-around;
   height: 17vh;
   align-items: center;
 }
@@ -26,7 +27,7 @@ a {
 }
 
 .logoBtn {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   padding: 1rem;
   text-decoration: none;
@@ -40,34 +41,73 @@ a {
 .navbar {
   display:flex;
   gap: 5vw;
-  margin-left: auto;
-  margin-right: 5vw;
-  justify-content: space-around;
 }
- .navbar a {
-   /*padding: 20px 40px;*/
- }
 
 .navbar a[role="button"] {
   text-decoration: none;
   color: black;
 }
+
 .navbar a[role="button"]:hover {
- color: grey;
+  color: grey;
 }
 
 
+/* To override the :hover and :active styles when the link has the active class */
+.navbar a.active:hover, .navbar a.active:active {
+  background-color: #3498db; /* Maintain active background color */
+  color: white; /* Maintain active text color */
+}
+
+
+
+.title {
+  font-size: 3rem;
+  margin-left: 15vw;
+  align-content: center;
+  height: 10vh;
+}
+
+.subtitle {
+  font-size: 1.75rem;
+  color: rgb(85, 85, 85);
+  margin-left: 20vw;
+  align-content: center;
+  height: 10vh;
+}
+
+.article-title {
+  font-size: 1rem;
+  margin-left: 20vw;
+  height: 4vh;
+  font-style: italic;
+  align-content: center;
+}
 
 a[role="button"] {
   border-radius: 40px;
 }
 
-button { border-radius: 40px;}
-button:hover {}
+
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 96vh;
+  margin: 0 20vw;
+  box-sizing: border-box;
+  min-height: fit-content;
+}
 
 article {
-  margin: 20px 0;
-  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem;
+  margin: 1rem;
+  border: lightgray 0.1rem solid;
+  border-radius: 2rem;
 }
 
 .post footer{
@@ -76,19 +116,51 @@ article {
 
 }
 
-.postAuthor {
-  display: flex;
-  align-items: baseline;
+.post__title {
+  font-size: 1.75rem;
+  text-decoration: none;
+  color: black;
+  height: 8vh;
+  align-content: center;
 }
 
-.postAuthor p {
-  margin: 0 0 10px 0;
+.post__desc {
+  height: 5vh;
+  align-content: center;
 }
+
+.post__author {
+  color: grey;
+  font-style: italic;
+  height: 5vh;
+  align-content: center;
+}
+
+.indv__post__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-content: center;
+  height: 4rem;
+}
+
+.p__small {
+  font-size: smaller;
+  color: grey;
+  align-content: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.postAuthor {
+  display: flex;
+}
+
 
 .date {
   padding-left: 20px;
   color: gray;
   font-size: small;
+  align-content: center;
+  margin-left: auto;
 }
 
 .unameError {
@@ -101,14 +173,23 @@ article {
   width: 521px;
 }
 
-.postList {}
-
-.postListing {
-  padding: 40px;
+.postList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.postListing a {
-  color: white;
+.postListing {
+  transition: 300ms ease-in-out;
+}
+
+.postListing a:hover {
+  color: gray;
+}
+
+.postListing:hover {
+  border-color: black;
+  transform: scale(1.04);
 }
 
 .postDetails a{
@@ -167,7 +248,9 @@ article {
 }
 
 .commentsBox {
-
+  background-color: lightgray;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .commentInfo {
@@ -181,7 +264,7 @@ article {
 }
 
 .commentInfo button {
-  background-color: #3a3a3a;
+  background-color: gray;
   border: none;
 }
 
