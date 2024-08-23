@@ -210,6 +210,33 @@ article {
   margin-top: 30px;
 }
 
+/*--------------------------LOGIN / SIGN UP----------------------------*/
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+input[type=text], input[type=password], button[type=submit] {
+  border: #343434 0.1rem solid;
+  border-radius: 2rem;
+  background-color: lightgray;
+  padding: .75rem;
+}
+
+button[type=submit] {
+  background-color: #85ceff;
+  padding: 1rem;
+}
+
+.form-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
 
 .voteBox {
   background-color: #1e95be;

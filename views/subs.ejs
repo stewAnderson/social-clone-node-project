@@ -14,7 +14,7 @@
 
   <body>
     <div class="header">
-      <a class="logoBtn" role="button" href="/"><h1><strong>Not Reddit</strong></h1></a>
+      <a class="logoBtn" role="button" href="/">Not Reddit</a>
       <div class="navbar">
         <a role="button" href="/">Home</a>
         <a role="button" href="/subs/list">Subs</a>
@@ -28,18 +28,21 @@
     </div>
 
     <main>
-      <div style="display: flex; align-items: baseline">
-        <h1>Sub Groups</h1>
+      <div class="subgroups-list">
+        <p class="title">Subgroups</p>
         <% if (user) { %>
           <a style="margin-left: auto" role="button" href="/posts/create">Create Post</a>
         <% } %>
       </div>
+      <section>
         <% subgroups.forEach(subgroup => { %>
-          <article class="subgroupList">
-            <h3><a href="/subs/show/<%= subgroup.name %>"><%= subgroup.name %></a></h3>
-            <p><%= subgroup.description %></p>
+          <article class="postListing">
+            <p class="post__title" style="font-weight: bold"><a href="/subs/show/<%= subgroup.name %>"><%= subgroup.name %></a></p>
+            <p class="post__desc"><%= subgroup.description %></p>
           </article>
         <% }); %>
+      </section>
+
     </main>
   </body>
 </html>
