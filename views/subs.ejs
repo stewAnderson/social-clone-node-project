@@ -28,20 +28,25 @@
     </div>
 
     <main>
-      <div class="subgroups-list">
-        <p class="title">Subgroups</p>
-        <% if (user) { %>
-          <a style="margin-left: auto" role="button" href="/posts/create">Create Post</a>
-        <% } %>
+      <div class="main-wrapper">
+        <div class="sidebar">
+          <div>
+            <p class="title">Subgroups</p>
+            <% if (user) { %>
+              <a style="margin-left: auto" role="button" href="/posts/create">Create Post</a>
+            <% } %>
+          </div>
+        </div>
+
+        <section>
+          <% subgroups.forEach(subgroup => { %>
+            <article class="postListing">
+              <p class="post__title" style="font-weight: bold"><a href="/subs/show/<%= subgroup.name %>"><%= subgroup.name %></a></p>
+              <p class="post__desc"><%= subgroup.description %></p>
+            </article>
+          <% }); %>
+        </section>
       </div>
-      <section>
-        <% subgroups.forEach(subgroup => { %>
-          <article class="postListing">
-            <p class="post__title" style="font-weight: bold"><a href="/subs/show/<%= subgroup.name %>"><%= subgroup.name %></a></p>
-            <p class="post__desc"><%= subgroup.description %></p>
-          </article>
-        <% }); %>
-      </section>
 
     </main>
   </body>

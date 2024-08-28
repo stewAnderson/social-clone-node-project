@@ -28,24 +28,30 @@
     </div>
 
     <main>
-      <p class="title">Homepage</p>
-      <p class="subtitle">Welcome, <%= user?.uname || "Visitor" %></p>
-      <p class="article-title">All Posts</p>
-      <section>
-        <% if (user) { %>
-          <a style="margin-left: auto" role="button" href="/posts/create">Create Post</a>
-        <% } %>
-
-        <div class="postList">
-          <% posts.forEach(post => { %>
-          <article class="postListing">
-            <p ><a class="post__title" href="/posts/show/<%=post.id%>"><%= post.title %></a></p>
-            <p class="post__desc"><%= post.description %></p>
-            <p class="post__author"><%= users[post.creator -1].uname%>
-          </article>
-          <% }) %>
+      <div class="main-wrapper">
+        <div class="sidebar">
+          <p class="title">Homepage</p>
+          <p class="subtitle">Welcome, <%= user?.uname || "Visitor" %></p>
+          <p class="article-title">All Posts</p>
         </div>
-      </section>
+
+        <section>
+          <% if (user) { %>
+            <a style="margin-left: auto" role="button" href="/posts/create">Create Post</a>
+          <% } %>
+
+          <div class="postList">
+            <% posts.forEach(post => { %>
+            <article class="postListing">
+              <p ><a class="post__title" href="/posts/show/<%=post.id%>"><%= post.title %></a></p>
+              <p class="post__desc"><%= post.description %></p>
+              <p class="post__author"><%= users[post.creator -1].uname%>
+            </article>
+            <% }) %>
+          </div>
+        </section>
+      </div>
+
 
     </main>
   </body>

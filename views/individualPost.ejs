@@ -1,161 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!--  <link-->
-<!--    rel="stylesheet"-->
-<!--    href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"-->
-<!--  />-->
-  <link href="/css/style.css" rel="stylesheet"/>
-  <script src="/scripts.js"></script>
-  <title>Post</title>
-</head>
+    <head>
+      <meta charset="UTF-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--  <link-->
+    <!--    rel="stylesheet"-->
+    <!--    href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"-->
+    <!--  />-->
+      <link href="/css/style.css" rel="stylesheet"/>
+      <script src="/scripts.js"></script>
+      <title>Post</title>
+    </head>
 
-<body>
-<div class="header">
-    <a class="logoBtn" role="button" href="/">Not Reddit</a>
-    <div class="navbar">
-        <a role="button" href="/">Home</a>
-        <a role="button" href="/subs/list">Subs</a>
-        <% if (!user) { %>
-            <a role="button" href="/auth/login">Login</a>
-        <% } else { %>
-            <a role="button" href="/auth/logout">Logout</a>
-        <% } %>
-        <a role="button" href="/auth/signUp">Sign Up</a>
-    </div>
-</div>
-
-<main>
-    <p class="title">View Post</p>
-
-    <section>
-        <article>
-            <div class="postDetails">
-                <div class="postAuthor">
-                    <p class="post__author"><%= post.creator.uname %></p>
-                    <p class="date"><%= new Date(post.timestamp).toLocaleDateString() %></p>
-                </div>
-                <p class="indv__post__title"><%= post.title %></p>
-                <a><%= post.link %></a>
+    <body>
+        <div class="header">
+            <a class="logoBtn" role="button" href="/">Not Reddit</a>
+            <div class="navbar">
+                <a role="button" href="/">Home</a>
+                <a role="button" href="/subs/list">Subs</a>
+                <% if (!user) { %>
+                    <a role="button" href="/auth/login">Login</a>
+                <% } else { %>
+                    <a role="button" href="/auth/logout">Logout</a>
+                <% } %>
+                <a role="button" href="/auth/signUp">Sign Up</a>
             </div>
+        </div>
 
-            <form id="editForm" action="/posts/edit/<%= post.id %>" method="POST" style="display: none">
-                <h4> Edit Post</h4>
-                <label for="editTitle">Title:</label>
-                <input type="text" id="editTitle" name="title" value="<%= post.title %>">
-                <label for="editLink">Link:</label>
-                <input type="text" id="editLink" name="link" value="<%= post.link %>">
-                <label for="editSubgroup">Subgroup:</label>
-                <input type="text" id="editSubgroup" name="subgroup" value="<%= post.subgroup %>">
-                <label for="editDescription">Description:</label>
-                <textarea id="editDescription" name="description"></textarea>
-                <button class="editSubmitBtn" type="submit">Save</button>
-            </form>
-            <!---------------------------------------------------------------------------------------------------  POST BUTTONS  -->
-
-            <div class="postBtnBar">
-                <div class="voteBox smallBtn">
-                    <form action="/posts/vote/<%= post.id %>" method="post">
-                        <input type="hidden" name="value" value="1">
-                        <button type="submit" class="voteButton <%= userVote && userVote.value === 1 ? 'upvoted' : '' %>">
-                            &#9650;
-                        </button>
-                    </form>
-
-                    <p><%= voteCount %></p>
-
-                    <form action="/posts/vote/<%= post.id %>" method="post">
-                        <input type="hidden" name="value" value="-1">
-                        <button type="submit"
-                                class="voteButton <%= userVote && userVote.value === -1 ? 'downvoted' : '' %>">&#9660;
-                        </button>
-                    </form>
+        <main>
+            <div class="main-wrapper">
+                <div class="sidebar">
+                    <p class="title">View Post</p>
                 </div>
 
-                <% if (user) { %>
-                    <button id="commentBtn" class="smallBtn">
-                        <img src="/images/comment.png" alt="Comment">
-                    </button>
-                <% } %>
-
-                <% if (user == post.creator) { %>
-                    <button id="editBtn" class="smallBtn">
-                        <img src="/images/edit.png" alt="Edit">
-                    </button>
-                <% } %>
-
-                <% if (user == post.creator) { %>
-                    <button id="deletePostBtn" class="smallBtn">
-                        <img src="/images/delete.png" alt="Delete">
-                    </button>
-                <% } %>
-            </div>
-
-            <div id="deleteOptions" style="display: none; padding-top: 15px">
-                <div class="deleteBtnContainer">
-                    <form action="/posts/delete/<%= post.id %>" method="POST">
-                        <button type="submit" name="action" value="delete">Delete</button>
-                    </form>
-                    <form action="/posts/delete/<%= post.id %>" method="POST">
-                        <button type="submit" name="action" value="cancel" style="background-color: #3a3a3a">Cancel</button>
-                    </form>
-                </div>
-            </div>
-
-
-            <!-----------------------------------------------------------------------------------------------  COMMENTS  -->
-            <footer>
-                <p class="p__small">Comments</p>
-
-                <form id="commentForm" action="/posts/comment-create/<%= post.id %>" method="POST" style="display: none">
-                    <textarea name="commentText" placeholder="Leave a comment"></textarea>
-                    <button class="commentSubmit">Submit</button>
-                </form>
-
-                <div class="commentsBox">
-                    <% post.comments.forEach(comment => { %>
-                        <div style="display: flex">
-                            <p style="flex: 1; margin-bottom: 0;"><%= comment.description %></p>
-                            <p style="font-size: smaller; color: grey; margin-bottom: 5px;"><%= new Date(comment.timestamp).toLocaleDateString() %></p>
+                <section>
+                    <article>
+                        <div class="postDetails">
+                            <p class="indv__post__title"><%= post.title %></p>
+                            <div class="postAuthor">
+                                <p class="post__author"><%= post.creator.uname %></p>
+                                <p class="date"><%= new Date(post.timestamp).toLocaleDateString() %></p>
+                            </div>
+                            <a><%= post.link %></a>
                         </div>
 
-                        <div class="commentInfo">
-                            <p style="font-size: smaller; color: grey; margin-top: 15px;"><%= comment.creator.uname %></p>
-                            <% console.log(comment.creator.id) %>
-                            <% if (user.id == comment.creator.id) { %>
-                                <button id="deleteCommentBtn_<%= comment.id %>" class="smallBtn">
+                        <form id="editForm" action="/posts/edit/<%= post.id %>" method="POST" style="display: none">
+                            <h4> Edit Post</h4>
+                            <label for="editTitle">Title:</label>
+                            <input type="text" id="editTitle" name="title" value="<%= post.title %>">
+                            <label for="editLink">Link:</label>
+                            <input type="text" id="editLink" name="link" value="<%= post.link %>">
+                            <label for="editSubgroup">Subgroup:</label>
+                            <input type="text" id="editSubgroup" name="subgroup" value="<%= post.subgroup %>">
+                            <label for="editDescription">Description:</label>
+                            <textarea id="editDescription" name="description"></textarea>
+                            <button class="editSubmitBtn" type="submit">Save</button>
+                        </form>
+                        <!---------------------------------------------------------------------------------------------------  POST BUTTONS  -->
+
+                        <div class="postBtnBar">
+                            <div class="voteBox smallBtn">
+                                <form action="/posts/vote/<%= post.id %>" method="post">
+                                    <input type="hidden" name="value" value="1">
+                                    <button type="submit" class="voteButton <%= userVote && userVote.value === 1 ? 'upvoted' : '' %>">
+                                        &#9650;
+                                    </button>
+                                </form>
+
+                                <p><%= voteCount %></p>
+
+                                <form action="/posts/vote/<%= post.id %>" method="post">
+                                    <input type="hidden" name="value" value="-1">
+                                    <button type="submit"
+                                            class="voteButton <%= userVote && userVote.value === -1 ? 'downvoted' : '' %>">&#9660;
+                                    </button>
+                                </form>
+                            </div>
+
+                            <% if (user) { %>
+                                <button id="commentBtn" class="smallBtn">
+                                    <img src="/images/comment.png" alt="Comment">
+                                </button>
+                            <% } %>
+
+                            <% if (user == post.creator) { %>
+                                <button id="editBtn" class="smallBtn">
+                                    <img src="/images/edit.png" alt="Edit">
+                                </button>
+                            <% } %>
+
+                            <% if (user == post.creator) { %>
+                                <button id="deletePostBtn" class="smallBtn">
                                     <img src="/images/delete.png" alt="Delete">
                                 </button>
                             <% } %>
                         </div>
 
-                        <div id="deleteCommentOptions_<%= comment.id %>" style="display: none">
+                        <div id="deleteOptions" style="display: none; padding-top: 15px">
                             <div class="deleteBtnContainer">
-                                <form action="/posts/comments/delete/<%= comment.id %>" method="POST">
-                                    <input type="hidden" name="postId" value="<%= post.id %>">
+                                <form action="/posts/delete/<%= post.id %>" method="POST">
                                     <button type="submit" name="action" value="delete">Delete</button>
                                 </form>
-                                <form action="/posts/comments/delete/<%= comment.id %>" method="POST">
-                                    <button type="submit" name="action" value="cancel" style="background-color: #3a3a3a">
-                                        Cancel
-                                    </button>
+                                <form action="/posts/delete/<%= post.id %>" method="POST">
+                                    <button type="submit" name="action" value="cancel" style="background-color: #3a3a3a">Cancel</button>
                                 </form>
                             </div>
                         </div>
 
-                    <% }); %>
-                </div>
-            </footer>
-        </article>
-    </section>
+
+                        <!-----------------------------------------------------------------------------------------------  COMMENTS  -->
+                        <footer>
+                            <p class="p__small">Comments</p>
+
+                            <form id="commentForm" action="/posts/comment-create/<%= post.id %>" method="POST" style="display: none">
+                                <textarea name="commentText" placeholder="Leave a comment"></textarea>
+                                <button class="commentSubmit">Submit</button>
+                            </form>
+
+                            <div class="commentsBox">
+                                <% post.comments.forEach(comment => { %>
+                                    <div style="display: flex">
+                                        <p style="flex: 1; margin-bottom: 0;"><%= comment.description %></p>
+                                        <p style="font-size: smaller; color: grey; margin-bottom: 5px;"><%= new Date(comment.timestamp).toLocaleDateString() %></p>
+                                    </div>
+
+                                    <div class="commentInfo">
+                                        <p style="font-size: smaller; color: grey; margin-top: 15px;"><%= comment.creator.uname %></p>
+                                        <% console.log(comment.creator.id) %>
+                                        <% if (user.id == comment.creator.id) { %>
+                                            <button id="deleteCommentBtn_<%= comment.id %>" class="smallBtn">
+                                                <img src="/images/delete.png" alt="Delete">
+                                            </button>
+                                        <% } %>
+                                    </div>
+
+                                    <div id="deleteCommentOptions_<%= comment.id %>" style="display: none">
+                                        <div class="deleteBtnContainer">
+                                            <form action="/posts/comments/delete/<%= comment.id %>" method="POST">
+                                                <input type="hidden" name="postId" value="<%= post.id %>">
+                                                <button type="submit" name="action" value="delete">Delete</button>
+                                            </form>
+                                            <form action="/posts/comments/delete/<%= comment.id %>" method="POST">
+                                                <button type="submit" name="action" value="cancel" style="background-color: #3a3a3a">
+                                                    Cancel
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                <% }); %>
+                            </div>
+                        </footer>
+                    </article>
+                </section>
+            </div>
 
 
-</main>
+
+        </main>
 
 
 
-</body>
+    </body>
 </html>

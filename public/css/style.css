@@ -8,6 +8,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  color: rgb(85, 85, 85);
+  background-color: #F7E1CA;
 }
 
 html {
@@ -15,15 +17,23 @@ html {
 }
 
 .header {
-  /*overflow: hidden;*/
+  overflow: hidden;
   display: flex;
   justify-content: space-around;
-  height: 17vh;
+  height: 20vh;
   align-items: center;
+  border-bottom: white 0.1rem solid;
+  transition: all ease-in-out 300ms;
+}
+
+.header:hover {
+  border-color: black;
 }
 
 a {
   transition: all 300ms ease;
+  color: rgb(53, 53, 53);
+  text-decoration: none;
 }
 
 .logoBtn {
@@ -31,7 +41,6 @@ a {
   font-weight: bold;
   padding: 1rem;
   text-decoration: none;
-  color: black;
 }
 
 .logoBtn:hover {
@@ -45,7 +54,6 @@ a {
 
 .navbar a[role="button"] {
   text-decoration: none;
-  color: black;
 }
 
 .navbar a[role="button"]:hover {
@@ -53,73 +61,83 @@ a {
 }
 
 
-/* To override the :hover and :active styles when the link has the active class */
 .navbar a.active:hover, .navbar a.active:active {
-  background-color: #3498db; /* Maintain active background color */
-  color: white; /* Maintain active text color */
+  background-color: #3498db;
+  color: white;
 }
 
 
 
 .title {
   font-size: 3rem;
-  margin-left: 15vw;
-  align-content: center;
-  height: 10vh;
+  height: 15vh;
+}
+
+.title-w-border {
+  border-bottom: white 0.1rem solid;
 }
 
 .subtitle {
   font-size: 1.75rem;
-  color: rgb(85, 85, 85);
-  margin-left: 20vw;
-  align-content: center;
-  height: 10vh;
+  height: 8vh;
 }
 
 .article-title {
   font-size: 1rem;
-  margin-left: 20vw;
-  height: 4vh;
+  height: 5vh;
   font-style: italic;
+}
+
+.title, .subtitle, .article-title {
   align-content: center;
+  padding-right: 2rem;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 30vw;
 }
 
 a[role="button"] {
   border-radius: 40px;
 }
 
-
-
 section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 96vh;
-  margin: 0 20vw;
   box-sizing: border-box;
+  border-left: 0.1rem solid white;
+  border-right: 0.1rem solid white;
+  border-bottom: 0.1rem solid white;
   min-height: fit-content;
 }
 
 article {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 2rem;
-  margin: 1rem;
-  border: lightgray 0.1rem solid;
-  border-radius: 2rem;
+  padding: 3vh;
+  border-bottom: white 0.1rem solid;
+  background-color: #F7E1CA;
 }
 
 .post footer{
   margin: 10px -30px -80px -30px;
   padding-top: 20px;
-
 }
 
 .post__title {
   font-size: 1.75rem;
   text-decoration: none;
-  color: black;
+
   height: 8vh;
   align-content: center;
 }
@@ -130,7 +148,6 @@ article {
 }
 
 .post__author {
-  color: grey;
   font-style: italic;
   height: 5vh;
   align-content: center;
@@ -145,7 +162,6 @@ article {
 
 .p__small {
   font-size: smaller;
-  color: grey;
   align-content: center;
   margin: 2rem 0 1rem 0;
 }
@@ -154,10 +170,8 @@ article {
   display: flex;
 }
 
-
 .date {
   padding-left: 20px;
-  color: gray;
   font-size: small;
   align-content: center;
   margin-left: auto;
@@ -165,22 +179,19 @@ article {
 
 .unameError {
   background-color: #E3B505;
-  color: black;
   font-size: smaller;
   border-radius: 20px;
   padding: 5px;
   text-align: center;
   width: 521px;
 }
-
 .postList {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .postListing {
-  transition: 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 
 .postListing a:hover {
@@ -188,12 +199,18 @@ article {
 }
 
 .postListing:hover {
-  border-color: black;
-  transform: scale(1.04);
+  border: black 0.1rem solid;
+  transform: scale(1.02);
 }
 
-.postDetails a{
-  margin-bottom: 20px;
+.postDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.postDetails a {
+  height: 5vh;
+  align-content: center;
 }
 .smallBtn {
   display: flex;
@@ -217,18 +234,18 @@ article {
   flex-direction: column;
   gap: 2rem;
   align-items: center;
+  width: 50vw;
 }
 
 input[type=text], input[type=password], button[type=submit] {
   border: #343434 0.1rem solid;
-  border-radius: 2rem;
-  background-color: lightgray;
   padding: .75rem;
 }
 
 button[type=submit] {
-  background-color: #85ceff;
-  padding: 1rem;
+  color: white;
+  background-color: black;
+  padding: .75rem;
 }
 
 .form-inner-container {
@@ -311,7 +328,6 @@ button[type=submit] {
 }
 
 #editForm label {
-  color: gray;
   font-size: smaller;
   padding-left: 5px;
 }

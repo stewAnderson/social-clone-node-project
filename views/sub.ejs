@@ -27,22 +27,36 @@
       </div>
     </div>
     <main>
-      <div style="display: flex; align-items: baseline">
-        <h1><%= subgroup.charAt(0).toUpperCase() + subgroup.slice(1) %> Posts</h1>
-        <% if (user) { %>
-          <a style="margin-left: auto" role="button" href="/posts/create">Create Post</a>
-        <% } %>
+      <div class="main-wrapper">
+        <div class="sidebar">
+          <div>
+            <p class="title">Subgroups</p>
+            <% if (user) { %>
+              <a role="button" href="/posts/create">Create Post</a>
+            <% } %>
+          </div>
+          <div>
+            <p class="subtitle"><%= subgroup.charAt(0).toUpperCase() + subgroup.slice(1) %> Posts</p>
+            <% if (user) { %>
+              <a role="button" href="/posts/create">Create Post</a>
+            <% } %>
+          </div>
+        </div>
+
+        <section>
+          <div class="postList">
+            <% posts.forEach(post => { %>
+            <article class="postListing">
+              <p><a class="post__title" href="/posts/show/<%=post.id%>"><%= post.title %></a></p>
+              <p class="post__desc"><%= post.description %></p>
+              <p class="post__author"><%= users[post.creator -1].uname%></p>
+            </article>
+            <% }) %>
+          </div>
+        </section>
+
       </div>
 
-      <div class="postList">
-        <% posts.forEach(post => { %>
-        <article class="postListing">
-          <h3><a href="/posts/show/<%=post.id%>"><%= post.title %></a></h3>
-          <p><%= post.description %></p>
-          <p style="color: grey; margin: 0;"><%= users[post.creator -1].uname%></p>
-        </article>
-        <% }) %>
-      </div>
     </main>
   </body>
 </html>

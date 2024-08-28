@@ -28,9 +28,12 @@
     </div>
 
     <main>
-      <div style="display: flex; justify-content: space-around">
+      <div class="main-wrapper">
+        <div class="sidebar">
+          <p class="title">Login</p>
+        </div>
         <article class="loginBox">
-          <h1>Login</h1>
+
           <form action="/auth/login" method="post">
             <div class="form-inner-container">
               <input type="text" name="uname" id="uname" placeholder="Username" />
